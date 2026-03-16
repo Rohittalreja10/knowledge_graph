@@ -27,7 +27,7 @@ Clone the repository:
 
 ```
 git clone https://github.com/Rohittalreja10/knowledge_graph.git
-cd <project-folder>
+cd knowledge_graphv
 ```
 
 Install dependencies:
