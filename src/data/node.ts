@@ -1,5 +1,25 @@
 export const seedNodes = [
-    { id: "1", data: { label: "React", note: "A JavaScript library for building UI." }, position: { x: 0, y: 0 } },
-    { id: "2", data: { label: "Next.js", note: "React framework with SSR." }, position: { x: 200, y: 0 } },
-    { id: "3", data: { label: "TypeScript", note: "Typed superset of JavaScript." }, position: { x: 400, y: 0 } },
+    // People (LEFT SIDE)
+    {
+        id: "p1",
+        data: { label: "Alice" },
+        position: { x: 0, y: 0 },
+    },
+    {
+        id: "p2",
+        data: { label: "Bob" },
+        position: { x: 0, y: 150 },
+    },
+
+    // Skills (RIGHT SIDE)
+    {
+        id: "s1",
+        data: { label: "React" },
+        position: { x: 500, y: 0 },
+    },
+    {
+        id: "s2",
+        data: { label: "Node.js" },
+        position: { x: 500, y: 150 },
+    },
 ];

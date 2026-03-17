@@ -28,10 +28,26 @@ export default function Graph() {
 
     if (saved) {
       const parsed = JSON.parse(saved);
-      setNodes(parsed.nodes);
+      setNodes(
+        parsed.nodes.map((node: Node) => ({
+          ...node,
+          style: {
+            background: node.id.startsWith("p") ? "#dbeafe" : "#dcfce7",
+            border: "1px solid #333",
+          },
+        })),
+      );
       setEdges(parsed.edges);
     } else {
-      setNodes(seedNodes);
+      setNodes(
+        seedNodes.map((node) => ({
+          ...node,
+          style: {
+            background: node.id.startsWith("p") ? "#dbeafe" : "#dcfce7",
+            border: "1px solid #333",
+          },
+        })),
+      );
       setEdges(seedEdges);
     }
   }, []);
@@ -45,7 +61,7 @@ export default function Graph() {
       addEdge(
         {
           ...params,
-          label: "relates to",
+          label: "familiar",
         },
         eds,
       ),
@@ -72,14 +88,29 @@ export default function Graph() {
     });
   };
 
-  const addNode = () => {
-    const id = Date.now().toString();
+  const addMember = () => {
+    const id = "p" + Date.now().toString();
 
     const newNode = {
       id,
-      data: { label: "New Topic", note: "" },
+      data: { label: "New Member" },
       position: {
-        x: Math.random() * 400,
+        x: 0,
+        y: Math.random() * 400,
+      },
+    };
+
+    setNodes((nds) => [...nds, newNode]);
+  };
+
+  const addSkill = () => {
+    const id = "s" + Date.now().toString();
+
+    const newNode = {
+      id,
+      data: { label: "New Skill" },
+      position: {
+        x: 500,
         y: Math.random() * 400,
       },
     };
@@ -168,15 +199,17 @@ export default function Graph() {
         </div>
       )}
       <button
-        onClick={addNode}
-        style={{
-          position: "absolute",
-          left: 20,
-          top: 20,
-          zIndex: 10,
-        }}
+        onClick={addMember}
+        style={{ position: "absolute", left: 20, top: 20, zIndex: 10 }}
       >
-        Add Node
+        Add Member
+      </button>
+
+      <button
+        onClick={addSkill}
+        style={{ position: "absolute", left: 140, top: 20, zIndex: 10 }}
+      >
+        Add Skill
       </button>
     </div>
   );
